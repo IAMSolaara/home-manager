@@ -29,7 +29,6 @@
   };
 
   outputs = inputs @ {
-    self,
     nixpkgs,
     flake-utils,
     home-manager,
@@ -42,13 +41,16 @@
         name = "evermore-${system}"; # You can name the configurations based on system and architecture
         value = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
-          modules =
-            if nixpkgs.legacyPackages.${system}.stdenv.isDarwin
+          modules = with {
+            isDarwin = nixpkgs.legacyPackages.${system}.stdenv.isDarwin;
+            isLinux = nixpkgs.legacyPackages.${system}.stdenv.isLinux;
+          };
+            if isDarwin
             then [
               ./home.nix
               ./darwin.nix
             ]
-            else if nixpkgs.legacyPackages.${system}.stdenv.isLinux
+            else if isLinux
             then [
               ./home.nix
               ./linux.nix

@@ -4,6 +4,8 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,51 +29,58 @@
   };
 
   outputs = inputs @ {
+    self,
     nixpkgs,
+    flake-utils,
     home-manager,
     alejandra,
     bash-env-json,
     bash-env-nushell,
     ...
   }: {
-    homeConfigurations."evermore@macos" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."aarch64-darwin";
+    homeConfigurations = builtins.listToAttrs (map (system: {
+        name = "evermore-${system}"; # You can name the configurations based on system and architecture
+        value = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules =
+            if nixpkgs.legacyPackages.${system}.stdenv.isDarwin
+            then [
+              ./home.nix
+              ./darwin.nix
+            ]
+            else if nixpkgs.legacyPackages.${system}.stdenv.isLinux
+            then [
+              ./home.nix
+              ./linux.nix
+            ]
+            else throw "Unsupported system";
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit system;
+            inherit self;
+          };
+        };
+      })
+      flake-utils.lib.defaultSystems);
+    #homeConfigurations =
+    #	flake-utils.lib.eachDefaultSystem (system:
+    #		name = "evermore-${system}";
+    #value = home-manager.lib.homeManagerConfiguration {
+    #	pkgs = nixpkgs.legacyPackages.${system};
+    #}
+    #	);
+    #homeConfigurations."evermore@macos" = home-manager.lib.homeManagerConfiguration {
+    #  pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
-      modules = [
-        ./home.nix
-        ./darwin.nix
-      ];
+    #  modules = [
+    #    ./home.nix
+    #    ./darwin.nix
+    #  ];
 
-      extraSpecialArgs = {
-        inherit inputs;
-        system = "aarch64-darwin";
-      };
-    };
-    homeConfigurations."evermore@linux_arm" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."aarch64-linux";
-
-      modules = [
-        ./home.nix
-        ./linux.nix
-      ];
-
-      extraSpecialArgs = {
-        inherit inputs;
-        system = "aarch64-linux";
-      };
-    };
-    homeConfigurations."evermore@linux_x86" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
-
-      modules = [
-        ./home.nix
-        ./linux.nix
-      ];
-
-      extraSpecialArgs = {
-        inherit inputs;
-        system = "x86_64-linux";
-      };
-    };
+    #  extraSpecialArgs = {
+    #    inherit inputs;
+    #    system = "aarch64-darwin";
+    #  };
+    #};
   };
 }

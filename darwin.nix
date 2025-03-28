@@ -2,6 +2,7 @@
   pkgs,
   system,
   inputs,
+  self,
   ...
 }: {
   home.homeDirectory = "/Users/evermore";
@@ -26,5 +27,9 @@
       	 to_string: { |v| $v |  str join (char space) }
       }
     '';
+  };
+
+  home.sessionVariables = {
+    "HMS_PATH" = "${pkgs.home-manager}/bin/home-manager switch --flake ${self}#evermore-${system}";
   };
 }

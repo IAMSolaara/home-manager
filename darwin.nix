@@ -4,6 +4,8 @@
   inputs,
   ...
 }: {
+  home.homeDirectory = "/Users/evermore";
+
   home.packages = [
     pkgs.raycast
     pkgs.alt-tab-macos

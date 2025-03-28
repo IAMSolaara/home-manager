@@ -49,7 +49,7 @@
         else if isLinux
         then [
           ./home.nix
-          #./linux.nix
+          ./linux.nix
         ]
         else [./home.nix];
 

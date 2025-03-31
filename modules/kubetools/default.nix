@@ -26,6 +26,10 @@ in {
       pkgs.kubevirt
     ];
 
-    programs.kubecolor = import ./kubecolor.nix;
+    programs.kubecolor = import ./kubecolor.nix {
+      inherit pkgs;
+      inherit config;
+      inherit lib;
+    };
   };
 }

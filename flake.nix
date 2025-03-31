@@ -36,32 +36,29 @@
     bash-env-json,
     bash-env-nushell,
     ...
-  }: {
-    homeConfigurations = builtins.listToAttrs (map (system: {
-        name = "evermore-${system}"; # You can name the configurations based on system and architecture
-        value = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
-          modules = with {
-            isDarwin = nixpkgs.legacyPackages.${system}.stdenv.isDarwin;
-            isLinux = nixpkgs.legacyPackages.${system}.stdenv.isLinux;
-          };
-            if isDarwin
-            then [
-              ./home.nix
-              ./darwin.nix
-            ]
-            else if isLinux
-            then [
-              ./home.nix
-              ./linux.nix
-            ]
-            else throw "Unsupported system";
+  }:
+    flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+        system_specific =
+          if pkgs.stdenv.isDarwin
+          then ./darwin.nix
+          else if pkgs.stdenv.isLinux
+          then ./linux.nix
+          else throw "Unsupported system.";
+      in {
+        packages.homeConfigurations."evermore" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home.nix
+            system_specific
+            ./modules/nushell
+          ];
           extraSpecialArgs = {
             inherit inputs;
             inherit system;
           };
         };
-      })
-      flake-utils.lib.defaultSystems);
-  };
+      }
+    );
 }

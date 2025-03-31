@@ -52,7 +52,7 @@
           modules = [
             ./home.nix
             system_specific
-            ./modules/nushell
+            ./modules
           ];
           extraSpecialArgs = {
             inherit inputs;

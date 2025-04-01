@@ -30,6 +30,9 @@ in {
     programs.nushell.envFile.source = ./sources/env.nu;
     programs.nushell.extraConfig = ''
       use ${inputs.bash-env-nushell.packages.${system}.default}/bash-env.nu
+
+      source ${./sources/fnm.nu}
+
       bash-env /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh | load-env
 
       $env.ENV_CONVERSIONS."NIX_PROFILES" = {

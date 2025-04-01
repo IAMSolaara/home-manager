@@ -2,13 +2,20 @@
   pkgs,
   system,
   inputs,
+  lib,
   ...
 }: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "evermore";
+  home.homeDirectory =
+    if pkgs.stdenv.isDarwin
+    then "/Users/evermore"
+    else "/home/evermore";
 
   solaaradotnet.shells.nushell.enable = true;
+  solaaradotnet.pkgsets.kubetools.enable = true;
+  solaaradotnet.pkgsets.kubetools.flavor = "full";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -19,43 +26,44 @@
   # release notes.
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  home.packages = [
-    # desktop apps
-    pkgs.feishin
-    pkgs.virt-manager
-    pkgs.imhex
+  home.packages = lib.mkMerge [
+    # Universal packages
+    [
+      # desktop apps
+      pkgs.feishin
+      pkgs.virt-manager
+      pkgs.imhex
 
-    # k8s tools
-    pkgs.kubectl
-    pkgs.kubecolor
-    pkgs.kubectx
-    pkgs.kustomize
-    pkgs.krew
-    pkgs.k9s
-    pkgs.kubernetes-helm
-    pkgs.cilium-cli
-    pkgs.talosctl
-    pkgs.kubevirt
+      # terminal stuff
+      pkgs.wezterm
+      pkgs.oh-my-posh
+      inputs.bash-env-json.packages.${system}.default
+      inputs.bash-env-nushell.packages.${system}.default
 
-    # terminal stuff
-    pkgs.wezterm
-    pkgs.oh-my-posh
-    inputs.bash-env-json.packages.${system}.default
-    inputs.bash-env-nushell.packages.${system}.default
+      # misc tools
+      pkgs.ncdu
+      pkgs.minicom
 
-    # misc tools
-    pkgs.ncdu
-    pkgs.minicom
+      # dev
+      pkgs.git
+      pkgs.github-cli
+      pkgs.lazygit
+      pkgs.go
+      pkgs.maven
+      pkgs.quarkus
+      pkgs.go-task
+      inputs.alejandra.defaultPackage.${system}
+    ]
 
-    # dev
-    pkgs.git
-    pkgs.github-cli
-    pkgs.lazygit
-    pkgs.go
-    pkgs.maven
-    pkgs.quarkus
-    pkgs.go-task
-    inputs.alejandra.defaultPackage.${system}
+    # macOS packages
+    (
+      lib.mkIf
+      pkgs.stdenv.isDarwin
+      [
+        pkgs.raycast
+        pkgs.alt-tab-macos
+      ]
+    )
   ];
 
   # Let Home Manager install and manage itself.

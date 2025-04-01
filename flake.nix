@@ -40,18 +40,11 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
-        system_specific =
-          if pkgs.stdenv.isDarwin
-          then ./darwin.nix
-          else if pkgs.stdenv.isLinux
-          then ./linux.nix
-          else throw "Unsupported system.";
       in {
         packages.homeConfigurations."evermore" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ./home.nix
-            system_specific
             ./modules
           ];
           extraSpecialArgs = {

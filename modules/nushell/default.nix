@@ -26,8 +26,8 @@ in {
       inputs.bash-env-nushell.packages.${system}.default
     ];
     programs.nushell.enable = true;
-    programs.nushell.configFile.source = ./config.nu;
-    programs.nushell.envFile.source = ./env.nu;
+    programs.nushell.configFile.source = ./sources/config.nu;
+    programs.nushell.envFile.source = ./sources/env.nu;
     programs.nushell.extraConfig = ''
       use ${inputs.bash-env-nushell.packages.${system}.default}/bash-env.nu
       bash-env /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh | load-env

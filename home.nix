@@ -44,6 +44,7 @@
       pkgs.git
       pkgs.github-cli
       pkgs.lazygit
+      pkgs.rustup
       pkgs.go
       pkgs.maven
       pkgs.quarkus

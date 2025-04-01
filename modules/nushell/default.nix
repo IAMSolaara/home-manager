@@ -8,6 +8,9 @@
 }: let
   cfg = config.solaaradotnet.shells.nushell;
 in {
+  imports = [
+    ./oh-my-posh.nix
+  ];
   options = {
     solaaradotnet.shells.nushell = {
       enable = lib.mkEnableOption "enable nushell.";

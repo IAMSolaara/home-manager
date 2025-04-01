@@ -1,3 +1,4 @@
+# vim:ts=2:sw=2:expandtab
 {
   description = "Home Manager configuration of evermore";
 
@@ -11,20 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.1.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    bash-env-json = {
-      url = "github:tesujimath/bash-env-json/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     bash-env-nushell = {
       url = "github:tesujimath/bash-env-nushell/main";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.bash-env-json.follows = "bash-env-json";
+      inputs.flake-utils.follows = "flake-utils";
     };
   };
 
@@ -32,8 +23,6 @@
     nixpkgs,
     flake-utils,
     home-manager,
-    alejandra,
-    bash-env-json,
     bash-env-nushell,
     ...
   }:

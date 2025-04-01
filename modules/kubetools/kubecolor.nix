@@ -1,14 +1,22 @@
 # vim:ts=2:sw=2:expandtab
 {
+  pkgs,
   config,
   lib,
   ...
 }: let
+  inherit (lib) mkIf getExe;
   cfg = config.solaaradotnet.pkgsets.kubetools;
+  nushell_cfg = config.solaaradotnet.shells.nushell;
 in {
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.kubecolor.enable = true;
     programs.kubecolor.enableAlias = true;
+
+    programs.nushell.shellAliases = mkIf (nushell_cfg.enable) {
+      k = "kubecolor";
+      kubectl = "kubecolor";
+    };
 
     programs.kubecolor.settings = {
       preset = "dark";

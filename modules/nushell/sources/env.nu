@@ -54,7 +54,7 @@ path add ($env.HOME | path join '.mix' | path join 'escripts')
 path add ($env.HOME | path join '.bun' | path join 'bin')
 path add ($env.HOME | path join 'go' | path join 'bin')
 
-try{
+try {
     $env.JAVA_HOME = (/usr/libexec/java_home -v 21)
 }
 # -----

@@ -15,7 +15,11 @@
     bash-env-nushell = {
       url = "github:tesujimath/bash-env-nushell/main";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    krewfile = {
+      url = "github:brumhard/krewfile";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -24,6 +28,7 @@
     flake-utils,
     home-manager,
     bash-env-nushell,
+    krewfile,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (

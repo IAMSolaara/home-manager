@@ -32,7 +32,6 @@
       pkgs.minicom
 
       # dev
-      pkgs.git
       pkgs.github-cli
       pkgs.lazygit
       pkgs.rustup
@@ -55,6 +54,39 @@
     )
   ];
 
+  programs.git.enable = true;
+  programs.git.userName = "Sarah Evermore";
+  programs.git.userEmail = "sarah.evermore.02@gmail.com";
+  programs.git.signing.key = "~/.ssh/gitkey.pub";
+  programs.git.signing.format = "ssh";
+  programs.git.signing.signByDefault = true;
+  programs.git.extraConfig = {
+    init = {
+      defaultbranch = "master";
+    };
+    push = {
+      autosetupremote = true;
+    };
+  };
+  programs.git.aliases = {
+    lg = "lg1";
+    lg1 = "lg1-specific --all";
+    lg2 = "lg2-specific --all";
+    lg3 = "lg3-specific --all";
+    lg1-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
+    lg2-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
+    lg3-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
+  };
+  programs.git.includes = [
+    {
+      path = "~/Workspace/Code/energit/.gitconfig";
+      condition = "gitdir:~/Workspace/Code/energit/**";
+    }
+    {
+      path = "~/Workspace/Code/energit/.gitconfig";
+      condition = "gitdir:~/Workspace/Docs/energit/**";
+    }
+  ];
 
   # --- DO NOT TOCH ---
   # Let Home Manager install and manage itself.

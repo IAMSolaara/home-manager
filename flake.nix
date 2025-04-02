@@ -21,6 +21,11 @@
       url = "github:brumhard/krewfile";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    so-logo-ascii-generator = {
+      url = "github:solaaradotnet/so-logo-ascii-generator";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -29,6 +34,7 @@
     home-manager,
     bash-env-nushell,
     krewfile,
+    so-logo-ascii-generator,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (

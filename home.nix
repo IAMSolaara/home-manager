@@ -12,6 +12,35 @@
     then "/Users/evermore"
     else "/home/evermore";
 
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
+  home.shellAliases = lib.mkMerge [
+    {
+      l = "ls -la";
+      ll = "ls -l";
+      vim = "nvim";
+      hyfetch = "hyfetch --ascii-file ~/Documents/solaara_logo.txt";
+    }
+    (lib.mkIf pkgs.stdenv.isDarwin {
+      tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";
+      wireshark = "/Applications/Wireshark.app/Contents/MacOS/Wireshark";
+    })
+  ];
+  home.sessionPath = [
+    "/opt/homebrew/bin/"
+    "/usr/local/bin"
+    "~/.local/bin"
+    "~/.cargo/bin"
+    "/opt/homebrew/opt/mysql-client@5.7/bin"
+    "/opt/homebrew/opt/mysql-client/bin"
+    "~/.krew/bin"
+    "~/.mix/escripts"
+    "~/.bun/bin"
+    "~/go/bin"
+  ];
+
   solaaradotnet.shells.nushell.enable = true;
   solaaradotnet.pkgsets.kubetools.enable = true;
   solaaradotnet.pkgsets.kubetools.flavor = "full";

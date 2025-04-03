@@ -82,6 +82,14 @@
     )
   ];
 
+  programs.jujutsu.enable = true;
+  programs.jujutsu.settings = {
+    user = {
+      name = "Sarah Evermore";
+      email = "sarah.evermore.02@gmail.com";
+    };
+  };
+
   programs.git.enable = true;
   programs.git.userName = "Sarah Evermore";
   programs.git.userEmail = "sarah.evermore.02@gmail.com";

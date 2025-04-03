@@ -41,23 +41,19 @@
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        packages.nixDarwinHomeConfigurations."evermore" =
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.evermore = import ./home.nix;
-            modules = [./modules];
-            extraSpecialArgs = {
-              inherit inputs;
-              inherit system;
-            };
+        packages.nixDarwinHomeConfigurations."evermore" = home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.evermore = import ./home.nix;
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit system;
           };
+        };
         packages.homeConfigurations."evermore" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ./home.nix
-            ./modules
           ];
           extraSpecialArgs = {
             inherit inputs;

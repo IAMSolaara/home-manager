@@ -22,7 +22,7 @@ in {
     home.packages = [
       pkgs.bash-env-json
       inputs.bash-env-nushell.packages.${system}.default
-      inputs.so-logo-ascii-generator.defaultPackage.${system}
+      inputs.so-logo-ascii-generator.packages.${system}.default
     ];
     programs.nushell.enable = true;
     programs.nushell.configFile.source = ./sources/config.nu;

@@ -195,6 +195,21 @@
         "type": "github"
       }
     },
+    "nix-std": {
+      "locked": {
+        "lastModified": 1710870712,
+        "narHash": "sha256-e+7MJF2gsgTBuOWv4mCimSP0D9+naeFSw9a7N3yEmv4=",
+        "owner": "chessai",
+        "repo": "nix-std",
+        "rev": "31bbc925750cc9d8f828fe55cee1a2bd985e0c00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chessai",
+        "repo": "nix-std",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1742889210,
@@ -229,6 +244,7 @@
         "flake-utils": "flake-utils_3",
         "home-manager": "home-manager",
         "krewfile": "krewfile",
+        "nix-std": "nix-std",
         "nixpkgs": "nixpkgs",
         "so-logo-ascii-generator": "so-logo-ascii-generator"
       }

@@ -4,5 +4,6 @@
     ./nushell
     ./kubetools
     ./fetches
+    ./wezterm
   ];
 }

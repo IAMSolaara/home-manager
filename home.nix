@@ -69,6 +69,10 @@
       pkgs.go-task
       pkgs.alejandra
       pkgs.php
+
+      # fonts
+      pkgs.nerd-fonts.dejavu-sans-mono
+      pkgs.raleway
     ]
 
     # macOS packages
@@ -81,6 +85,8 @@
       ]
     )
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.jujutsu.enable = true;
   programs.jujutsu.settings = {

@@ -24,7 +24,6 @@
       l = "ls -la";
       ll = "ls -l";
       vim = "nvim";
-      hyfetch = "hyfetch --ascii-file ~/Documents/solaara_logo.txt";
     }
     (lib.mkIf pkgs.stdenv.isDarwin {
       tailscale = "/Applications/Tailscale.app/Contents/MacOS/Tailscale";

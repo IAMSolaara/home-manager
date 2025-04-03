@@ -55,9 +55,6 @@
       pkgs.virt-manager
       pkgs.imhex
 
-      # terminal stuff
-      pkgs.wezterm
-
       # misc tools
       pkgs.ncdu
       pkgs.minicom

@@ -2,6 +2,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [
@@ -47,6 +48,12 @@
   solaaradotnet.shells.nushell.enable = true;
   solaaradotnet.pkgsets.kubetools.enable = true;
   solaaradotnet.pkgsets.kubetools.flavor = "full";
+
+  programs.wezterm.enable = true;
+  xdg.configFile."wezterm" = {
+    enable = true;
+    source = inputs.df-wezterm;
+  };
 
   home.packages = lib.mkMerge [
     # Universal packages

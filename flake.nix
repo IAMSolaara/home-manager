@@ -27,6 +27,11 @@
       url = "github:solaaradotnet/so-logo-ascii-generator";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    df-wezterm = {
+      url = "github:iamsolaara/dotfilesWEZTERM";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
@@ -37,6 +42,7 @@
     krewfile,
     so-logo-ascii-generator,
     nix-std,
+    df-wezterm,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (

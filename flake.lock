@@ -46,6 +46,22 @@
         "type": "github"
       }
     },
+    "df-wezterm": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744207558,
+        "narHash": "sha256-t0uTlBrvvpGelrX92miUZPR30yGm+lpKjO77sNEaUaU=",
+        "owner": "iamsolaara",
+        "repo": "dotfilesWEZTERM",
+        "rev": "ec657350c6d9e20bd3cd5730ae002b072e48bd1e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iamsolaara",
+        "repo": "dotfilesWEZTERM",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -241,6 +257,7 @@
     "root": {
       "inputs": {
         "bash-env-nushell": "bash-env-nushell",
+        "df-wezterm": "df-wezterm",
         "flake-utils": "flake-utils_3",
         "home-manager": "home-manager",
         "krewfile": "krewfile",

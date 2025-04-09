@@ -52,6 +52,12 @@ in {
           alignment = "left";
           segments = [
             {
+              type = "nix-shell";
+              style = "plain";
+              foreground = "p:sapphire";
+              template = "(nix-{{.Type}})";
+            }
+            {
               type = "text";
               style = "diamond";
               foreground = "p:red";

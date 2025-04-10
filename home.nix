@@ -31,6 +31,7 @@
     })
   ];
   home.sessionPath = [
+    "/run/current-system/sw/bin"
     "/opt/homebrew/bin/"
     "/usr/local/bin"
     "~/.local/bin"
@@ -58,6 +59,7 @@
       # misc tools
       pkgs.ncdu
       pkgs.minicom
+      pkgs.rsgain
 
       # dev
       pkgs.github-cli

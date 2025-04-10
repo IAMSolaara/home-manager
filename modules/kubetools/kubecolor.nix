@@ -1,11 +1,10 @@
 # vim:ts=2:sw=2:expandtab
 {
-  pkgs,
   config,
   lib,
   ...
 }: let
-  inherit (lib) mkIf getExe;
+  inherit (lib) mkIf;
   cfg = config.solaaradotnet.pkgsets.kubetools;
   nushell_cfg = config.solaaradotnet.shells.nushell;
 in {

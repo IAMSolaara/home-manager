@@ -1,5 +1,6 @@
 # -----
 use std "path add"
+path add /run/current-system/sw/bin
 path add /opt/homebrew/bin/
 path add /usr/local/bin
 path add ~/.local/bin

@@ -1,7 +1,7 @@
 {
-  pkgs,
   lib,
   std,
+  config,
   ...
 }: let
   # mmake_rgb_esc_fg :: int -> int -> int -> string
@@ -12,11 +12,13 @@
 
   # make_key
   make_key = key: (make_rgb_esc_fg 255 241 164) + std.string.justifyRight 10 " " key;
+
+  are_guipkgs_enabled = config.solaaradotnet.pkgsets.guipkgs.enable;
 in {
   programs.fastfetch.enable = true;
   programs.fastfetch.settings = {
     "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
-    logo = {
+    logo = lib.mkIf are_guipkgs_enabled {
       type = "iterm";
       source = ../../res/solaara_logo_flat.png;
       width = 30;

@@ -1,9 +1,9 @@
 # vim:ts=2:sw=2:expandtab
 {...}: {
   imports = [
-    ./nushell
-    ./kubetools
-    ./fetches
-    ./guipgks
+    ./shells/nushell
+    ./pkgsets/kubetools
+    ./pkgsets/fetches
+    ./pkgsets/guipgks
   ];
 }

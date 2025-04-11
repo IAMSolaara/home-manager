@@ -10,6 +10,7 @@
   inherit (lib) mkIf mkMerge mkEnableOption mkOption mkDefault types getExe;
   cfg = config.solaaradotnet.pkgsets.guipkgs;
   nushell_cfg = config.solaaradotnet.shells.nushell;
+  neovim_cfg = config.solaaradotnet.editors.neovim;
 in {
   options = {
     solaaradotnet.pkgsets.guipkgs = {
@@ -39,6 +40,17 @@ in {
     xdg.configFile."wezterm" = {
       enable = true;
       source = inputs.df-wezterm;
+    };
+
+    programs.neovide = mkIf neovim_cfg.enable {
+      enable = true;
+      settings = {
+        font = {
+          normal = "DejaVuSansM Nerd Font";
+          size = 14.0;
+        };
+        tabs = false;
+      };
     };
   };
 }

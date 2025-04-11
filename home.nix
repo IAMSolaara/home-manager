@@ -16,6 +16,9 @@
     then "/Users/evermore"
     else "/home/evermore";
 
+  home.shell.enableShellIntegration = true;
+  home.shell.enableZshIntegration = true;
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };

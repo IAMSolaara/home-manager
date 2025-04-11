@@ -73,11 +73,6 @@ in {
       }
 
 
-      # show console banner
-      try {
-       so-logo-ascii-generator $"(hostname -s)" -c
-      }
-
          source ${./sources/fnm.nu}
     '';
 

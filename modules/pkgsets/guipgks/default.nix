@@ -41,16 +41,5 @@ in {
       enable = true;
       source = inputs.df-wezterm;
     };
-
-    programs.neovide = mkIf neovim_cfg.enable {
-      enable = true;
-      settings = {
-        font = {
-          normal = "DejaVuSansM Nerd Font";
-          size = 14.0;
-        };
-        tabs = false;
-      };
-    };
   };
 }

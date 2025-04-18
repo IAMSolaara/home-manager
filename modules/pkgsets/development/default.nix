@@ -5,7 +5,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkIf mkMerge mkEnableOption mkOption mkDefault types getExe;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.solaaradotnet.pkgsets.development;
   neovim_cfg = config.solaaradotnet.editors.neovim;
 in {

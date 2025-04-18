@@ -4,13 +4,10 @@
   lib,
   inputs,
   config,
-  options,
   ...
 }: let
-  inherit (lib) mkIf mkMerge mkEnableOption mkOption mkDefault types getExe;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.solaaradotnet.pkgsets.guipkgs;
-  nushell_cfg = config.solaaradotnet.shells.nushell;
-  neovim_cfg = config.solaaradotnet.editors.neovim;
 in {
   options = {
     solaaradotnet.pkgsets.guipkgs = {

@@ -1,9 +1,6 @@
 {
-  pkgs,
   lib,
-  std,
   config,
-  options,
   ...
 }: let
   cfg = config.solaaradotnet.editors.neovim;

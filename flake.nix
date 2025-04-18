@@ -58,6 +58,7 @@
             inherit inputs;
             inherit system;
             std = nix-std.lib;
+            utils = import ./utils.nix {};
             flake_root = ./.;
             flake_res_path = ./res;
           };

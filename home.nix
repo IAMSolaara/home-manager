@@ -89,8 +89,8 @@
   };
 
   programs.git.enable = true;
-  programs.git.userName = "Sarah Evermore";
-  programs.git.userEmail = "sarah.evermore.02@gmail.com";
+  programs.git.userName = "Solaara Evermore";
+  programs.git.userEmail = "17319563+IAMSolaara@users.noreply.github.com";
   programs.git.signing.key = "~/.ssh/gitkey.pub";
   programs.git.signing.format = "ssh";
   programs.git.signing.signByDefault = true;

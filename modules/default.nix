@@ -6,5 +6,6 @@
     ./pkgsets/kubetools
     ./pkgsets/fetches
     ./pkgsets/guipgks
+    ./pkgsets/development
   ];
 }

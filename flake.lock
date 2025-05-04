@@ -242,11 +242,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743594129,
-        "narHash": "sha256-hxh0fz9KEIUbzOI69asTD9rsqu0wah1QR79ljzfnX4A=",
+        "lastModified": 1743662251,
+        "narHash": "sha256-q29tEcUSWVmRtQLa/KDTtlhgNvmLFYLj5q21qwdQQU0=",
         "owner": "solaaradotnet",
         "repo": "so-logo-ascii-generator",
-        "rev": "be42a82b2328411994b160a94017d8ab014d0d75",
+        "rev": "a42cb4e47eeb82361a8c0f6955198105b1b449f0",
         "type": "github"
       },
       "original": {

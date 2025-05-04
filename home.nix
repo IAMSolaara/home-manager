@@ -49,6 +49,7 @@
       pkgs.quarkus
       pkgs.go-task
       pkgs.alejandra
+      pkgs.php
     ]
 
     # macOS packages

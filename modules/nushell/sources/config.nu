@@ -852,7 +852,7 @@ def get_aerospace_windows [--app-name: string]: nothing -> table {
 alias l = ls -la
 alias ll = ls -l
 alias vim = nvim
-alias kubectl = kubecolor
+#alias kubectl = kubecolor
 alias k = kubectl
 alias hyfetch = hyfetch --ascii-file "/Users/evermore/Documents/solaara_logo.txt"
 alias tailscale = /Applications/Tailscale.app/Contents/MacOS/Tailscale
@@ -862,6 +862,8 @@ alias clabverter = docker run --rm --platform linux/amd64 --user (id -u) -v $"(p
 alias wireshark = /Applications/Wireshark.app/Contents/MacOS/Wireshark
 
 # show console banner
-so-logo-ascii-generator $"(hostname -s)" -c
+try {
+    so-logo-ascii-generator $"(hostname -s)" -c
+}
 # -----
 

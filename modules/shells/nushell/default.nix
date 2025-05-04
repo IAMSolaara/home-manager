@@ -68,8 +68,6 @@ in {
     programs.nushell.extraConfig = ''
          use ${inputs.bash-env-nushell.packages.${system}.default}/bash-env.nu
 
-         source ${./sources/fnm.nu}
-
       try {
       	 bash-env /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh | load-env
       }
@@ -79,6 +77,8 @@ in {
       try {
        so-logo-ascii-generator $"(hostname -s)" -c
       }
+
+         source ${./sources/fnm.nu}
     '';
 
     programs.carapace.enable = true;

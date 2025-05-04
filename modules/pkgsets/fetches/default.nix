@@ -1,6 +1,7 @@
 {
   lib,
   std,
+  flake_res_path,
   config,
   ...
 }: let
@@ -20,7 +21,7 @@ in {
     "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
     logo = lib.mkIf are_guipkgs_enabled {
       type = "iterm";
-      source = ../../res/solaara_logo_flat.png;
+      source = flake_res_path + /solaara_logo_flat.png;
       width = 30;
       padding = {
         left = 4;

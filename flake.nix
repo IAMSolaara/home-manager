@@ -6,6 +6,7 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    nix-std.url = "github:chessai/nix-std";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -35,6 +36,7 @@
     bash-env-nushell,
     krewfile,
     so-logo-ascii-generator,
+    nix-std,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
@@ -49,6 +51,7 @@
           extraSpecialArgs = {
             inherit inputs;
             inherit system;
+            std = nix-std.lib;
           };
         };
       }

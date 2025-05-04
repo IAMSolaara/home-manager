@@ -27,6 +27,7 @@ in {
     programs.nushell.enable = true;
     programs.nushell.configFile.source = ./sources/config.nu;
     programs.nushell.envFile.source = ./sources/env.nu;
+    programs.nushell.loginFile.source = ./sources/login.nu;
     programs.nushell.settings = {
       show_banner = false;
       cursor_shape.emacs = "blink_line";

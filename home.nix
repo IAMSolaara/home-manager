@@ -49,6 +49,7 @@
   ];
 
   solaaradotnet.shells.nushell.enable = true;
+  solaaradotnet.editors.neovim.enable = true;
   solaaradotnet.pkgsets.kubetools.enable = true;
   solaaradotnet.pkgsets.kubetools.flavor = "full";
   solaaradotnet.pkgsets.guipkgs.enable = true;

@@ -33,29 +33,44 @@
     bash-env-json,
     bash-env-nushell,
     ...
-  }: let
-    system = "aarch64-darwin";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations."evermore" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+  }: {
+    homeConfigurations."evermore@macos" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."aarch64-darwin";
 
-      modules = with pkgs.stdenv;
-        if isDarwin
-        then [
-          ./home.nix
-          ./darwin.nix
-        ]
-        else if isLinux
-        then [
-          ./home.nix
-          ./linux.nix
-        ]
-        else [./home.nix];
+      modules = [
+        ./home.nix
+        ./darwin.nix
+      ];
 
       extraSpecialArgs = {
         inherit inputs;
-        inherit system;
+        system = "aarch64-darwin";
+      };
+    };
+    homeConfigurations."evermore@linux_arm" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."aarch64-linux";
+
+      modules = [
+        ./home.nix
+        ./linux.nix
+      ];
+
+      extraSpecialArgs = {
+        inherit inputs;
+        system = "aarch64-linux";
+      };
+    };
+    homeConfigurations."evermore@linux_x86" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+
+      modules = [
+        ./home.nix
+        ./linux.nix
+      ];
+
+      extraSpecialArgs = {
+        inherit inputs;
+        system = "x86_64-linux";
       };
     };
   };

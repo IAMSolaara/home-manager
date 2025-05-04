@@ -61,6 +61,7 @@
       pkgs.ncdu
       pkgs.minicom
       pkgs.rsgain
+      pkgs.typst
 
       # fonts
       pkgs.nerd-fonts.dejavu-sans-mono

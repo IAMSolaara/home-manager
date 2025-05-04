@@ -4,12 +4,9 @@
   lib,
   ...
 }: {
-  home.packages = [
-    pkgs.wezterm
-  ];
-  #programs.wezterm.enable = true;
-  #xdg.configFile."wezterm" = {
-  #  enable = true;
-  #  source = ./legacy-dotfiles;
-  #};
+  programs.wezterm.enable = true;
+  xdg.configFile."wezterm" = {
+    enable = true;
+    source = ./legacy-dotfiles;
+  };
 }

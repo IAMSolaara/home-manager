@@ -36,7 +36,7 @@ in {
     programs.jujutsu.settings = {
       user = {
         name = "Solaara Evermore";
-        email = "sarah.evermore.02@gmail.com";
+        email = "evermore@solaara.net";
       };
       ui = {
         diff-editor = mkIf neovim_cfg.enable ["nvim" "-c" "DiffEditor $left $right $output"];
@@ -53,7 +53,7 @@ in {
     programs.git = {
       enable = true;
       userName = "Solaara Evermore";
-      userEmail = "sarah.evermore.02@gmail.com";
+      userEmail = "evermore@solaara.net";
       signing.key = "~/.ssh/gitkey.pub";
       signing.format = "ssh";
       signing.signByDefault = true;

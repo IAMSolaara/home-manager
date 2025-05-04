@@ -14,7 +14,6 @@ in {
 
     programs.nushell.shellAliases = mkIf (nushell_cfg.enable) {
       k = "kubecolor";
-      kubectl = "kubecolor";
     };
 
     programs.kubecolor.settings = {

@@ -2,10 +2,11 @@
   pkgs,
   system,
   inputs,
-  self,
   ...
-}: {
-  home.homeDirectory = "/Users/evermore";
+}: let
+  home_path = "/Users/evermore";
+in {
+  home.homeDirectory = home_path;
 
   home.packages = [
     pkgs.raycast
@@ -30,6 +31,6 @@
   };
 
   home.sessionVariables = {
-    "HMS_PATH" = "${pkgs.home-manager}/bin/home-manager switch --flake ${self}#evermore-${system}";
+    "HMS_PATH" = "${pkgs.home-manager}/bin/home-manager switch --flake ${home_path}/.config/home-manager#evermore-${system}";
   };
 }

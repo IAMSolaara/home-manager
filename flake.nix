@@ -57,7 +57,6 @@
           extraSpecialArgs = {
             inherit inputs;
             inherit system;
-            inherit self;
           };
         };
       })

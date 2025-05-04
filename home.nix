@@ -48,21 +48,11 @@
   solaaradotnet.shells.nushell.enable = true;
   solaaradotnet.pkgsets.kubetools.enable = true;
   solaaradotnet.pkgsets.kubetools.flavor = "full";
-
-  programs.wezterm.enable = true;
-  xdg.configFile."wezterm" = {
-    enable = true;
-    source = inputs.df-wezterm;
-  };
+  solaaradotnet.pkgsets.guipkgs.enable = true;
 
   home.packages = lib.mkMerge [
     # Universal packages
     [
-      # desktop apps
-      pkgs.feishin
-      pkgs.virt-manager
-      pkgs.imhex
-
       # misc tools
       pkgs.ncdu
       pkgs.minicom
@@ -83,16 +73,6 @@
       pkgs.nerd-fonts.dejavu-sans-mono
       pkgs.raleway
     ]
-
-    # macOS packages
-    (
-      lib.mkIf
-      pkgs.stdenv.isDarwin
-      [
-        pkgs.raycast
-        pkgs.alt-tab-macos
-      ]
-    )
   ];
 
   fonts.fontconfig.enable = true;

@@ -19,4 +19,6 @@ config.window_padding = {
 }
 config.default_cursor_style = "BlinkingBar"
 
+config.front_end = "WebGpu"
+
 return config

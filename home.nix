@@ -2,7 +2,6 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
 }: {
   imports = [
@@ -71,6 +70,7 @@
       pkgs.quarkus
       pkgs.go-task
       pkgs.alejandra
+      pkgs.nixd
 
       # fonts
       pkgs.nerd-fonts.dejavu-sans-mono
@@ -83,44 +83,45 @@
   programs.jujutsu.enable = true;
   programs.jujutsu.settings = {
     user = {
-      name = "Sarah Evermore";
+      name = "Solaara Evermore";
       email = "sarah.evermore.02@gmail.com";
     };
   };
-
-  programs.git.enable = true;
-  programs.git.userName = "Solaara Evermore";
-  programs.git.userEmail = "17319563+IAMSolaara@users.noreply.github.com";
-  programs.git.signing.key = "~/.ssh/gitkey.pub";
-  programs.git.signing.format = "ssh";
-  programs.git.signing.signByDefault = true;
-  programs.git.extraConfig = {
-    init = {
-      defaultbranch = "master";
+  programs.git = {
+    enable = true;
+    userName = "Solaara Evermore";
+    userEmail = "sarah.evermore.02@gmail.com";
+    signing.key = "~/.ssh/gitkey.pub";
+    signing.format = "ssh";
+    signing.signByDefault = true;
+    extraConfig = {
+      init = {
+        defaultbranch = "master";
+      };
+      push = {
+        autosetupremote = true;
+      };
     };
-    push = {
-      autosetupremote = true;
+    aliases = {
+      lg = "lg1";
+      lg1 = "lg1-specific --all";
+      lg2 = "lg2-specific --all";
+      lg3 = "lg3-specific --all";
+      lg1-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
+      lg2-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
+      lg3-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
     };
+    includes = [
+      {
+        path = "~/Workspace/Code/energit/.gitconfig";
+        condition = "gitdir:~/Workspace/Code/energit/**";
+      }
+      {
+        path = "~/Workspace/Code/energit/.gitconfig";
+        condition = "gitdir:~/Workspace/Docs/energit/**";
+      }
+    ];
   };
-  programs.git.aliases = {
-    lg = "lg1";
-    lg1 = "lg1-specific --all";
-    lg2 = "lg2-specific --all";
-    lg3 = "lg3-specific --all";
-    lg1-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'";
-    lg2-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
-    lg3-specific = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'";
-  };
-  programs.git.includes = [
-    {
-      path = "~/Workspace/Code/energit/.gitconfig";
-      condition = "gitdir:~/Workspace/Code/energit/**";
-    }
-    {
-      path = "~/Workspace/Code/energit/.gitconfig";
-      condition = "gitdir:~/Workspace/Docs/energit/**";
-    }
-  ];
 
   # --- DO NOT TOCH ---
   # Let Home Manager install and manage itself.

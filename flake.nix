@@ -42,7 +42,17 @@
         pkgs = nixpkgs.legacyPackages.${system};
         home-nix = ./home.nix;
       in {
-        packages.home-nix = home-nix;
+        packages.home-nix = {
+          pkgs,
+          lib,
+          ...
+        }:
+          import ./home.nix {
+            inherit inputs;
+            inherit pkgs;
+            inherit system;
+            inherit lib;
+          };
 
         packages.homeConfigurations."evermore" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

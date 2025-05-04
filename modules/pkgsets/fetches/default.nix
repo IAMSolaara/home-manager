@@ -3,14 +3,10 @@
   std,
   flake_res_path,
   config,
+  utils,
   ...
 }: let
-  # mmake_rgb_esc_fg :: int -> int -> int -> string
-  make_rgb_esc_fg = r: g: b: (builtins.fromJSON ''"\u001b" '') + "[38;2;${builtins.toString r};${builtins.toString g};${builtins.toString b}m";
-
-  # mmake_rgb_esc_bg :: int -> int -> int -> string
-  make_rgb_esc_bg = r: g: b: "\u001b[48;2;${builtins.toString r};${builtins.toString g};${builtins.toString b}m";
-
+  inherit (utils) make_rgb_esc_fg;
   # make_key
   make_key = key: (make_rgb_esc_fg 255 241 164) + std.string.justifyRight 10 " " key;
 

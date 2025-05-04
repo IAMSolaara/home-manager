@@ -6,5 +6,6 @@
 }: {
   imports = [
     ./nushell
+    ./kubetools
   ];
 }

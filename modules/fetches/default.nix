@@ -2,6 +2,11 @@
   programs.fastfetch.enable = true;
   programs.fastfetch.settings = {
     "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
+    logo = {
+      type = "iterm";
+      source = ../../res/solaara_logo_flat.png;
+      width = 40;
+    };
     display = {
       color = {
         keys = "light_magenta";

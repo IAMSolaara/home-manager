@@ -1,3 +1,4 @@
+# vim:ts=2:sw=2:expandtab
 {
   pkgs,
   config,
@@ -6,6 +7,8 @@
   system,
   ...
 }: let
+  inherit (lib) mkIf mkEnableOption;
+
   cfg = config.solaaradotnet.shells.nushell;
 in {
   imports = [
@@ -13,33 +16,29 @@ in {
   ];
   options = {
     solaaradotnet.shells.nushell = {
-      enable = lib.mkEnableOption "enable nushell.";
+      enable = mkEnableOption "enable nushell.";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.bash-env-json
+      inputs.bash-env-nushell.packages.${system}.default
+    ];
     programs.nushell.enable = true;
     programs.nushell.configFile.source = ./config.nu;
     programs.nushell.envFile.source = ./env.nu;
+    programs.nushell.extraConfig = ''
+      use ${inputs.bash-env-nushell.packages.${system}.default}/bash-env.nu
+      bash-env /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh | load-env
+
+      $env.ENV_CONVERSIONS."NIX_PROFILES" = {
+        from_string: { |s| $s | split row (char space) }
+        to_string: { |v| $v |  str join (char space) }
+      }
+    '';
 
     programs.carapace.enable = true;
     programs.carapace.enableNushellIntegration = true;
-
-    home.file."Library/Application Support/nushell/vendor/autoload/00-load-bash-env.nu" = {
-      text = ''
-        use ${inputs.bash-env-nushell.packages.${system}.default}/bash-env.nu
-      '';
-    };
-    home.file."Library/Application Support/nushell/vendor/autoload/01-load-nix-env.nu" = {
-      text = ''
-        bash-env /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh | load-env
-        path add /run/current-system/sw/bin
-
-        $env.ENV_CONVERSIONS."NIX_PROFILES" = {
-        	 from_string: { |s| $s | split row (char space) }
-        	 to_string: { |v| $v |  str join (char space) }
-        }
-      '';
-    };
   };
 }

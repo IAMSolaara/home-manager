@@ -1,3 +1,4 @@
+# vim:ts=2:sw=2:expandtab
 {
   pkgs,
   system,
@@ -36,9 +37,6 @@
 
       # terminal stuff
       pkgs.wezterm
-      pkgs.oh-my-posh
-      inputs.bash-env-json.packages.${system}.default
-      inputs.bash-env-nushell.packages.${system}.default
 
       # misc tools
       pkgs.ncdu
@@ -52,7 +50,7 @@
       pkgs.maven
       pkgs.quarkus
       pkgs.go-task
-      inputs.alejandra.defaultPackage.${system}
+      pkgs.alejandra
     ]
 
     # macOS packages

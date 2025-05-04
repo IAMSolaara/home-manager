@@ -40,20 +40,14 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
+        home-nix = ./home.nix;
       in {
-        packages.nixDarwinHomeConfigurations."evermore" = home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.evermore = import ./home.nix;
-          extraSpecialArgs = {
-            inherit inputs;
-            inherit system;
-          };
-        };
+        packages.home-nix = home-nix;
+
         packages.homeConfigurations."evermore" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home.nix
+            home-nix
           ];
           extraSpecialArgs = {
             inherit inputs;

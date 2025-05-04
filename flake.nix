@@ -63,25 +63,5 @@
         };
       })
       flake-utils.lib.defaultSystems);
-    #homeConfigurations =
-    #	flake-utils.lib.eachDefaultSystem (system:
-    #		name = "evermore-${system}";
-    #value = home-manager.lib.homeManagerConfiguration {
-    #	pkgs = nixpkgs.legacyPackages.${system};
-    #}
-    #	);
-    #homeConfigurations."evermore@macos" = home-manager.lib.homeManagerConfiguration {
-    #  pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-
-    #  modules = [
-    #    ./home.nix
-    #    ./darwin.nix
-    #  ];
-
-    #  extraSpecialArgs = {
-    #    inherit inputs;
-    #    system = "aarch64-darwin";
-    #  };
-    #};
   };
 }

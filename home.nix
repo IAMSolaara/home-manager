@@ -71,7 +71,6 @@
       pkgs.quarkus
       pkgs.go-task
       pkgs.alejandra
-      pkgs.php
 
       # fonts
       pkgs.nerd-fonts.dejavu-sans-mono

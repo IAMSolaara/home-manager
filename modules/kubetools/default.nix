@@ -16,7 +16,6 @@ in {
     home.packages = [
       # k8s tools
       pkgs.kubectl
-      pkgs.kubecolor
       pkgs.kubectx
       pkgs.kustomize
       pkgs.krew
@@ -26,5 +25,7 @@ in {
       pkgs.talosctl
       pkgs.kubevirt
     ];
+
+    programs.kubecolor = import ./kubecolor.nix;
   };
 }

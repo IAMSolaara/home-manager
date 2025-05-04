@@ -1,3 +1,10 @@
-{pkgs}: {
-  imports = [./nushell];
+{
+  pkgs,
+  config,
+  options,
+  ...
+}: {
+  imports = [
+    ./nushell
+  ];
 }

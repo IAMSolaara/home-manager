@@ -1,10 +1,7 @@
 # vim:ts=2:sw=2:expandtab
 {
-  pkgs,
   config,
   lib,
-  inputs,
-  system,
   ...
 }: let
   cfg = config.solaaradotnet.shells.nushell;

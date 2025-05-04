@@ -3,5 +3,6 @@
   imports = [
     ./nushell
     ./kubetools
+    ./fetches
   ];
 }

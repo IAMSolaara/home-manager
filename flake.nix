@@ -38,11 +38,7 @@
     nixpkgs,
     flake-utils,
     home-manager,
-    bash-env-nushell,
-    krewfile,
-    so-logo-ascii-generator,
     nix-std,
-    df-wezterm,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (

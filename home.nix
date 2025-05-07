@@ -62,6 +62,7 @@
       pkgs.minicom
       pkgs.rsgain
       pkgs.typst
+      pkgs.powershell
 
       # fonts
       pkgs.nerd-fonts.dejavu-sans-mono
@@ -75,6 +76,9 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-33.4.11"
+  ];
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

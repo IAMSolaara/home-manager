@@ -32,6 +32,11 @@
       url = "github:iamsolaara/dotfilesWEZTERM";
       flake = false;
     };
+
+    df-neovim = {
+      url = "github:iamsolaara/dotfilesNVIM/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {

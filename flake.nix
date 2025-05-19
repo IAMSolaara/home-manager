@@ -2,6 +2,17 @@
 {
   description = "Home Manager configuration of evermore";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://solaaradotnet.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "solaaradotnet.cachix.org-1:ySwixOoVu7Fy9DggLJDza0u6JsvfQ9Gn4WVcTYOLxes="
+    ];
+  };
+
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

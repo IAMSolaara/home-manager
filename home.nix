@@ -63,6 +63,7 @@
       pkgs.rsgain
       pkgs.typst
       pkgs.powershell
+      pkgs.cachix
 
       # fonts
       pkgs.nerd-fonts.dejavu-sans-mono

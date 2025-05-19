@@ -28,6 +28,7 @@ in {
         pkgs.go-task
         pkgs.alejandra
         pkgs.nixd
+        pkgs.aws-sam-cli
       ]
     ];
 

@@ -64,6 +64,8 @@
       pkgs.typst
       pkgs.powershell
       pkgs.cachix
+      pkgs.cosign
+      pkgs.minio-client
 
       # fonts
       pkgs.nerd-fonts.dejavu-sans-mono

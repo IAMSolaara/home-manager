@@ -67,6 +67,8 @@
       pkgs.cosign
       pkgs.minio-client
 
+      pkgs.tailscale
+
       # fonts
       pkgs.nerd-fonts.dejavu-sans-mono
       pkgs.raleway

@@ -22,6 +22,7 @@ in {
         pkgs.lazygit
         pkgs.lazyjj
         pkgs.rustup
+        pkgs.cargo-lambda
         pkgs.go
         pkgs.maven
         pkgs.quarkus

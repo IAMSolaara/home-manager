@@ -19,6 +19,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     nix-std.url = "github:chessai/nix-std";
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -38,6 +38,7 @@ in {
     };
 
     programs.nushell.environmentVariables = {
+      CARAPACE_BRIDGES = "zsh,fish,bash,inshellisense";
       EDITOR = "nvim";
       ENV_CONVERSIONS = {
         NIX_PROFILES = {
